@@ -4,10 +4,10 @@ add_action( 'init', 'prefix_portfolio_register_taxonomies' );
 
 function prefix_portfolio_register_taxonomies() {
 
-	/* Register the Portfolio Type taxonomy. */
+	/* Register the Portfolio Category taxonomy. */
 
 	register_taxonomy(
-		'portfolio_type',
+		'portfolio_category',
 		array( 'portfolio_project' ),
 		array(
 			'public'            => true,
@@ -16,8 +16,9 @@ function prefix_portfolio_register_taxonomies() {
 			'show_tagcloud'     => true,
 			'show_admin_column' => true,
 			'hierarchical'      => true,
-			'query_var'         => 'portfolio_type',
+			'query_var'         => 'portfolio_category',
 
+			/* Capabilities. */
 			'capabilities' => array(
 				'manage_terms' => 'manage_portfolio',
 				'edit_terms'   => 'manage_portfolio',
@@ -25,28 +26,30 @@ function prefix_portfolio_register_taxonomies() {
 				'assign_terms' => 'edit_portfolio_projects',
 			),
 
+			/* The rewrite handles the URL structure. */
 			'rewrite' => array(
-				'slug'         => 'portfolio/type',
+				'slug'         => 'portfolio/category',
 				'with_front'   => false,
 				'hierarchical' => true,
 				'ep_mask'      => EP_NONE
 			),
 
+			/* Labels used when displaying taxonomy and terms. */
 			'labels' => array(
-				'name'                       => __( 'Project Types', 'example-textdomain' ),
-				'singular_name'              => __( 'Project Type',  'example-textdomain' ),
-				'menu_name'                  => __( 'Types',         'example-textdomain' ),
-				'name_admin_bar'             => __( 'Type',          'example-textdomain' ),
-				'search_items'               => __( 'Search Types',  'example-textdomain' ),
-				'popular_items'              => __( 'Popular Types', 'example-textdomain' ),
-				'all_items'                  => __( 'All Types',     'example-textdomain' ),
-				'edit_item'                  => __( 'Edit Type',     'example-textdomain' ),
-				'view_item'                  => __( 'View Type',     'example-textdomain' ),
-				'update_item'                => __( 'Update Type',   'example-textdomain' ),
-				'add_new_item'               => __( 'Add New Type',  'example-textdomain' ),
-				'new_item_name'              => __( 'New Type Name', 'example-textdomain' ),
-				'parent_item'                => __( 'Parent Type',   'example-textdomain' ),
-				'parent_item_colon'          => __( 'Parent Type:',  'example-textdomain' ),
+				'name'                       => __( 'Project Categories', 'example-textdomain' ),
+				'singular_name'              => __( 'Project Category',   'example-textdomain' ),
+				'menu_name'                  => __( 'Categories',         'example-textdomain' ),
+				'name_admin_bar'             => __( 'Category',           'example-textdomain' ),
+				'search_items'               => __( 'Search Categories',  'example-textdomain' ),
+				'popular_items'              => __( 'Popular Categories', 'example-textdomain' ),
+				'all_items'                  => __( 'All Categories',     'example-textdomain' ),
+				'edit_item'                  => __( 'Edit Category',      'example-textdomain' ),
+				'view_item'                  => __( 'View Category',      'example-textdomain' ),
+				'update_item'                => __( 'Update Category',    'example-textdomain' ),
+				'add_new_item'               => __( 'Add New Category',   'example-textdomain' ),
+				'new_item_name'              => __( 'New Category Name',  'example-textdomain' ),
+				'parent_item'                => __( 'Parent Category',    'example-textdomain' ),
+				'parent_item_colon'          => __( 'Parent Category:',   'example-textdomain' ),
 				'separate_items_with_commas' => null,
 				'add_or_remove_items'        => null,
 				'choose_from_most_used'      => null,
